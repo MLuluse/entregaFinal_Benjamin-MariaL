@@ -20,38 +20,40 @@ class CartManager {
     }
   }
   // generas el Id del Carrito
-  #generateID(products) {
-    if (products.length === 0) return 1;
-    return products[products.length - 1].id + 1;
+  #generateID(cart) {
+    if (cart.length === 0) return 1;
+    return cart[cart.length - 1].cid + 1;
   }
 
   // crea el carrito
   async createCart() {
     let data = await fs.promises.readFile(this.#path, "utf-8"); //lee el archivo de carrito
     let carts = JSON.parse(data); // lo pone en memoria
-    const cartToAdd = { id: this.#generateID(carts), products: [] }; // genera el id del carrito
+    const cartToAdd = { cid: this.#generateID(carts), products: [] }; // genera el id del carrito
     carts.push(cartToAdd);
     await fs.promises.writeFile(this.#path, JSON.stringify(carts, null, 2));
     return cartToAdd;
   }
+
   //obtiene los productos dentro del carrito
-  async getProductsFromCart(id) {
-    if (!fs.existsSync(this.#path)) return "[ 500] The file does not exist";
+  async getCartById(cid) {
+    if (!fs.existsSync(this.#path)) return "[ 500] El archivo carrito no existe";
     let data = await fs.promises.readFile(this.#path, "utf-8");
     let carts = JSON.parse(data);
-    let cart = cart.find((item) => item.id === id);
-    if (!cart) return "[404] Cart not found";
+
+    let cart = carts.find((item) => item.cid === cid);
+    if (!cart) return "[404] Carrito no encontrado";
     return cart;
   }
+
+  //agrega productos al carrito -----> si el producto ya existe aumentar la cantidad
   async addProductsToCart(cid, pid) {
-    if (!fs.existsSync(this.#path)) return "[ 500] The file does not exist";
-    const result = await productManager.getProductsById(pid); //obtengo el producto a agregar --- me fijo si existe
-    if (!result) return "[400] The product with that id was not found";
-    const cart = await this.getProductsFromCart(cid); // me fijo si el carrito existe
-    if (!cart) return "[404] The cart with that id was not found";
-    const productIndex = cart.products.findIndex(
-      (item) => item.product === pid
-    ); // con el findIndex verifico si el prod ya esta en el carrito
+    if (!fs.existsSync(this.#path)) return "[ 500] El archivo carrito no existe";
+    const result = await productManager.getProductById(pid); //obtengo el producto a agregar --- me fijo si existe
+    if (!result) return "[400] El producto no fue encontrado";
+    const cart = await this.getCartById(cid); // me fijo si el carrito existe
+    if (!cart) return "[404] El carrito con ese id no fue encontrado";
+    const productIndex = cart.products.findIndex((item) => item.product === pid); // con el findIndex verifico si el prod ya esta en el carrito
     if (productIndex > -1) {
       // si esta la cantidad es mayor a -1 entocesa bajo
       cart.products[productIndex].quantity += 1; // aca suma uno a la cantidad
@@ -62,7 +64,7 @@ class CartManager {
     let data = await fs.promises.readFile(this.#path, "utf-8");
     let carts = JSON.parse(data);
     carts = carts.map((item) => {
-      if (item.id === cid) {
+      if (item.cid === cid) {
         return cart;
       } else {
         return item;
@@ -71,23 +73,8 @@ class CartManager {
     await fs.promises.writeFile(this.#path, JSON.stringify(carts, null, 2));
     return cart;
   }
-  async addOrUpdateProduct(cid, pid){
-    
-  }
-  async deleteCart(id) {
-    if (!fs.existsSync(this.#path)) return "Error no exixte ese carrito";
-    let isFound = false;
-    let data = await fs.promises.readFile(this.#path, "utf-8");
-    let Cart = JSON.parse(data);
-    let newCart = Cart.filter((item) => item.id !== id);
-    if (cart.length !== newCart.length)
-      return "El carrito se elimino con exito";
-    if (!isFound) return "El carrito no existe";
-    await fs.promises.writeFile(
-      this.#path,
-      JSON.stringify(newProducts, null, "/t")
-    );
-  }
+  
+ 
 }
 
 export default CartManager;

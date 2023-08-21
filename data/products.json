@@ -1,65 +1,68 @@
 [
   {
-    "id": 1,
-    "title": "Producto prueba",
-    "description": "Este es un producto prueba",
-    "price": 250,
-    "thumbnail": "Sin imagen",
-    "code": "abc123",
-    "stock": 25
-  },
-  {
-    "id": 2,
-    "title": "Nuevo producto 1",
-    "description": "Descripción del nuevo producto 1",
-    "price": 150,
-    "thumbnail": "imagen1.jpg",
-    "code": "abc456",
-    "stock": 20
-  },
-  {
-    "id": 3,
-    "title": "Nuevo producto 2",
-    "description": "Descripción del nuevo producto 2",
-    "price": 250,
-    "thumbnail": "imagen2.jpg",
-    "code": "xyz789",
+    "pid": 5,
+    "title": "producto tres",
+    "description": "descripcion nueva",
+    "price": 75,
+    "thumbnail": "imagen nueva",
+    "code": "ab45",
+    "category": "categoria A",
+    "status": true,
     "stock": 15
   },
   {
-    "id": 4,
-    "title": "producto dos",
-    "description": "esto es el producto dos",
-    "price": 350,
-    "thumbnail": "sin imagen2",
-    "code": "ab54",
-    "stock": 10
-  },
-  {
-    "id": 5,
-    "title": "producto tres",
-    "description": "esto es el producto tres",
-    "price": 75,
-    "thumbnail": "sin imagen3",
-    "code": "ab45",
-    "stock": 75
-  },
-  {
-    "id": 6,
+    "pid": 6,
     "title": "producto cuatro",
     "description": "esto es el producto cuatro",
     "price": 785,
     "thumbnail": "sin imagen4",
     "code": "camicaze",
+    "category": "categoria A",
+    "status": true,
     "stock": 10
   },
   {
-    "id": 7,
+    "pid": 7,
     "title": "topt",
     "description": "sucio",
     "price": 150,
     "thumbnail": "Sin imagen",
     "code": "a15243",
+    "category": "categoria A",
+    "status": true,
     "stock": 7
+  },
+  {
+    "pid": 8,
+    "title": "producto numerox",
+    "description": "camino",
+    "price": 50,
+    "thumbnail": "no hay",
+    "code": 7,
+    "category": "categoria A",
+    "status": true,
+    "stock": 4
+  },
+  {
+    "pid": 9,
+    "title": "Producto prueba",
+    "description": "Este es un producto prueba",
+    "price": 250,
+    "thumbnail": "Sin imagen",
+    "code": "758",
+    "category": "categoria A",
+    "status": true,
+    "stock": 25
+  },
+  {
+    "pid": 10,
+    "title": "producto tres",
+    "description": "descripcion nueva",
+    "price": 75,
+    "thumbnail": "imagen nueva",
+    "code": "78543",
+    "category": "categoria A", 
+    "status": true,
+    "stock": 15
   }
 ]
