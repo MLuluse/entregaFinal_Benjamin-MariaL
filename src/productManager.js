@@ -82,21 +82,22 @@ class ProductManager {
 
   async deleteProduct(id) {
     if (!fs.existsSync(this.#path)) return "Error no exixte el producto";
-   
+    let isFound = false;
     let data = await fs.promises.readFile(this.#path, "utf-8");
     let products = JSON.parse(data);
-    let isFound = false;
+
 
     const productIndex = products.findIndex((item) => item.pid === id);
 
     if (productIndex !== -1) {
       let isFound = true;
-      products.splice(productIndex, 1); // Elimina el producto del arreglo
+      products.splice(productIndex); // Elimina el producto del arreglo
       await fs.promises.writeFile(this.#path, JSON.stringify(products, null, 2));
       return "El producto se elimino con exito";
     }
   
     return "El producto no existe";
+    
   }
 }
 

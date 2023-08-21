@@ -42,7 +42,7 @@ router.put('/:pid', async(req, res) => {
 
 
 router.delete('/:pid', async( req, res) =>{
-  const id = req.params.pid; //obtengo el di del producto a eliminar
+  const id = parseInt(req.params.pid); //obtengo el id del producto a eliminar
 
       const product = await productManager.getProducts()
       const productId = product.find(item => item.pid == id)
