@@ -25,7 +25,7 @@ router.get('/:cid', async (req, res) => {
    const result = await cartManager.getCartById(cid)
    if(typeof result =='string'){
     const error = result.split('')
-    return res.status(404).json({status: 'error', payload:'The cart does not exist'})
+    return res.status(404).json({status: 'error', payload:'El carrito no existe'})
    }
    res.status(200).json({status:'success', payload: result})
   })
