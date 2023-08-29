@@ -30,7 +30,7 @@ app.use('/',viewsRouter )
 const httpServer = app.listen(8080, ()=> console.log('Server up!'))
 const socketServer = new Server(httpServer)
 
-socketServer.on(' connection', ()=>{
+socketServer.on(' connection', (socketClient)=>{
     console.log('new connection')
 
 })
