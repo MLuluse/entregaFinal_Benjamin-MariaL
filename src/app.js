@@ -30,9 +30,11 @@ app.use('/', viewsRouter)
 const httpServer = app.listen(8080, ()=> console.log('Server up!'))
 const socketServer = new Server(httpServer)
 
-socketServer.on('connection', (socketClient) => {
+socketServer.on('connection', socketClient => {
     console.log('new connection', socketClient.id)
-
+    socketClient.on('productList', data => {
+        socketServer.emit('updatedProducts', data)
+    })
 
 })
 

@@ -27,7 +27,7 @@ router.post('/', async(req, res)=>{
   const result = await productManager.addProduct(product)
   if(!result) return res.status(404).json({status: 'error', error: 'no se puede subir'})
  
-  return res.status(201).json({status: 'success', payload: result})
+  return res.status(201).json({status:'success', payload:result})
 })
 
 router.put('/:pid', async(req, res) => {
