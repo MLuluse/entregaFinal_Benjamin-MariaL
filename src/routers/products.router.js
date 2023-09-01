@@ -36,7 +36,7 @@ router.put('/:pid', async(req, res) => {
   const result = await productManager.updateProduct(pid, data)
   if(!result) return res.status(404).json({status: 'error', error: 'No modificar el prod'})
  
-  return res.status(201).json({status: 'success', payload: result})
+  return res.status(201).json({status: 'success', payload:result})
 
 })
 
@@ -48,8 +48,8 @@ router.delete('/:pid', async( req, res) =>{
       const productId = product.find(item => item.pid == id)
       if (!productId) {return res.status(404).json({error: 'El producto no existe'})}
        
-       await productManager.deleteProduct(id)
-      return res.status(200).json({ message: 'Producto eliminado con éxito' });
+      await productManager.deleteProduct(id)
+      return res.status(200).json({status: "success", payload:`Product ID: ${id} was deleted`});
  
 })
   

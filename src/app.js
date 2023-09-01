@@ -4,12 +4,12 @@ import { Server } from 'socket.io'
 import productRouter from './routers/products.router.js'
 import cartRouter from './routers/cart.router.js'
 import viewsRouter from './routers/views.router.js'
-
+import ProductManager from './productManager.js'
 
 
 const app = express()
 app.use(express.json())
-
+const pm = new ProductManager('./data/products.json')
 
 //aca setea handlebars
 app.engine('handlebars', handlebars.engine()) 
@@ -32,8 +32,11 @@ const socketServer = new Server(httpServer)
 
 socketServer.on('connection', socketClient => {
     console.log('new connection', socketClient.id)
-    socketClient.on('productList', data => {
-        socketServer.emit('updatedProducts', data)
+    socketClient.on('productList', async () => {
+        const productList = await pm.getProducts();
+        console.log(productList)
+      
+        socketServer.emit('updatedProducts', productList)
     })
 
 })

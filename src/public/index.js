@@ -31,6 +31,7 @@ document.getElementById('addProduct').addEventListener('click', () => {
     .then ( result => {
         if ( result.status === 'error')throw new Error(result.error)
         socketClient.emit('productList', result.payload)
+
         alert(`Nuevo producto agregado`)
          document.getElementById("title").value = ''
          document.getElementById("description").value = ''
@@ -46,19 +47,20 @@ document.getElementById('addProduct').addEventListener('click', () => {
     } )
 })
 
-deleteProduct = (id) => {
-    fetch (`/api/products/${id}`, {
+deleteProduct = (pid) => {
+    fetch (`/api/products/${pid}`, {
         method:'delete'
     })
     .then(result => result.json())
     .then (result => {
         if (result.status ==='error') throw new Error(result.error)
         socketClient.emit('productList', result.payload)
-        alert(`todo salio bien el products ${id} se borro`)
+        alert(`todo salio bien el products ${pid} se borro`)
     })
-    .catch(err = alert(`algo salio mal ${err}`))
+
 }
-socketClient.on('updatedProducts', (data) => {
+socketClient.on('updatedProducts', productList => {
+    console.log(productList)
     table.innerHTML =
     `<tr>
     <td></td>
@@ -72,7 +74,7 @@ socketClient.on('updatedProducts', (data) => {
     <td>Status</td>
     </tr>`
 
-    for(product of data){
+    for(product of productList){
         let tr = document.createElement('tr')
         tr.innerHTML=
                      `<td>${product.title}</td>

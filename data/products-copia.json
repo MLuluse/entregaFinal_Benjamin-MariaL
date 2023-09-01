@@ -53,5 +53,16 @@
     "category": "categoria B",
     "status": true,
     "stock": 6
+  },
+  {
+    "pid": 6,
+    "title": "producto seis",
+    "description": "descripcion producto seis",
+    "price": 75,
+    "thumbnail": "url no se 45",
+    "code": "asd45",
+    "category": "categoria C",
+    "status": true,
+    "stock": 15
   }
 ]

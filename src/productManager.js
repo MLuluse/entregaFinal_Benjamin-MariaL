@@ -86,7 +86,6 @@ class ProductManager {
     let data = await fs.promises.readFile(this.#path, "utf-8");
     let products = JSON.parse(data);
 
-
     const productIndex = products.findIndex((item) => item.pid === id);
 
     if (productIndex !== -1) {
@@ -96,7 +95,7 @@ class ProductManager {
       return "El producto se elimino con exito";
     }
   
-    return "El producto no existe";
+    return "El producto no existe"; 
     
   }
 }
