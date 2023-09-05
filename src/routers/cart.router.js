@@ -32,7 +32,7 @@ router.get('/:cid', async (req, res) => {
 
 
 //Ruta post que da producto y cantidad
-router.post('/:cid/product/:pid', async (req, res) => {
+router.post('/:cid/products/:pid', async (req, res) => {
     const cartId = parseInt(req.params.cid);
     const productId = parseInt(req.params.pid);
     //const productData = req.body;

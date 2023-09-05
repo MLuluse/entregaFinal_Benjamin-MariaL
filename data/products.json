@@ -33,17 +33,6 @@
     "stock": 10
   },
   {
-    "pid": 4,
-    "title": "producto cuatro",
-    "description": "descripcion producto cuatro",
-    "price": 20,
-    "thumbnail": "url no se 3",
-    "code": "cde22",
-    "category": "categoria A",
-    "status": true,
-    "stock": 8
-  },
-  {
     "pid": 5,
     "title": "producto cinco",
     "description": "descripcion producto cinco",
@@ -53,5 +42,49 @@
     "category": "categoria B",
     "status": true,
     "stock": 6
+  },
+  {
+    "pid": 6,
+    "title": "producto seis",
+    "description": "descripcion producto seis",
+    "price": 75,
+    "thumbnail": "url no se 45",
+    "code": "asd45",
+    "category": "categoria C",
+    "status": true,
+    "stock": 15
+  },
+  {
+    "pid": 7,
+    "title": "titulo doce",
+    "description": "decripcion de producto doce",
+    "price": "12",
+    "code": "12",
+    "category": "a",
+    "stock": "12",
+    "thumbnail": "imagen de producto 12",
+    "status": "true"
+  },
+  {
+    "pid": 8,
+    "title": "titulo otro",
+    "description": "descrpcion de otro titulo",
+    "price": "15",
+    "code": "15",
+    "category": "b",
+    "stock": "85",
+    "thumbnail": "imagen de otro",
+    "status": "false"
+  },
+  {
+    "pid": 9,
+    "title": "otro titulo",
+    "description": "decripcion de otro titulo",
+    "price": "15",
+    "code": "7896lala",
+    "category": "a",
+    "stock": "2",
+    "thumbnail": "imagen de otro",
+    "status": "true"
   }
 ]

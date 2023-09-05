@@ -57,6 +57,7 @@ class ProductManager {
       return '[Error], producto no entontrado PM'}
     return product;
   }
+  
 //actualiza los productos cuando se le da id
   async updateProduct(pid, updateProduct) {
     if (!fs.existsSync(this.#path)) return "El producto no existe A";
@@ -90,7 +91,7 @@ class ProductManager {
 
     if (productIndex !== -1) {
       let isFound = true;
-      products.splice(productIndex); // Elimina el producto del arreglo
+      products.splice(productIndex, 1); // Elimina el producto del arreglo
       await fs.promises.writeFile(this.#path, JSON.stringify(products, null, 2));
       return "El producto se elimino con exito";
     }
