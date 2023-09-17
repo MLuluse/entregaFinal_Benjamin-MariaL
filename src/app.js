@@ -38,7 +38,16 @@ socketServer.on('connection', socketClient => {
       
         socketServer.emit('updatedProducts', productList)
     })
+})
 
+const messages = []
+
+socketServer.on('connection', socketClient =>{
+    console.log('usuario andando')
+    socketClient.on('message', data => {
+        messages.push(data)
+        socketServer.emit('logs', messages)
+    })
 })
 
 

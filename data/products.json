@@ -66,17 +66,6 @@
     "status": "true"
   },
   {
-    "pid": 8,
-    "title": "titulo otro",
-    "description": "descrpcion de otro titulo",
-    "price": "15",
-    "code": "15",
-    "category": "b",
-    "stock": "85",
-    "thumbnail": "imagen de otro",
-    "status": "false"
-  },
-  {
     "pid": 9,
     "title": "otro titulo",
     "description": "decripcion de otro titulo",
