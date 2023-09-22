@@ -1,15 +1,18 @@
 import express from 'express'
 import handlebars from 'express-handlebars'
 import { Server } from 'socket.io'
+import mongoose from 'mongoose'
 import productRouter from './routers/products.router.js'
 import cartRouter from './routers/cart.router.js'
 import viewsRouter from './routers/views.router.js'
-import ProductManager from './productManager.js'
+//import ProductManager from './productManager.js'
+
 
 
 const app = express()
 app.use(express.json())
-const pm = new ProductManager('./data/products.json')
+app.use(express.urlencoded({extended: true}))
+//const pm = new ProductManager('./data/products.json')
 
 //aca setea handlebars
 app.engine('handlebars', handlebars.engine()) 
@@ -26,6 +29,11 @@ app.use('/api/carts', cartRouter)
 //ruta raiz donde se ven los productos con handlebars
 app.use('/', viewsRouter)
 
+
+try{
+    await mongoose.connect('mongodb+srv://coder:coder@cluster0.9dp3egu.mongodb.net/', {
+        dbName:'ecommerce'
+    })
 
 const httpServer = app.listen(8080, ()=> console.log('Server up!'))
 const socketServer = new Server(httpServer)
@@ -50,4 +58,6 @@ socketServer.on('connection', socketClient =>{
     })
 })
 
-
+} catch(err){
+    console.log(err.messages)
+}
